@@ -1,3 +1,7 @@
+require("dotenv").config({ path: "../../.env" });
+const fetch = require("cross-fetch");
+const insertJobsToDB = require("../../db/insertJobs");
+
 async function getKode24Jobs() {
   const jobs = [];
   const url = `https://functions.kode24.no/api/listing/job/sorted`;
@@ -10,24 +14,26 @@ async function getKode24Jobs() {
 
   const data = await response.json();
 
-  data.ads.forEach((el) =>
-    jobs.push({
-      company: el.company.name,
-      dato: new Date(el.published).toLocaleDateString("en-GB"),
-      lokasjon: el.locations[0].toUpperCase(),
-      tekst: el.title,
-      link: `https://www.kode24.no/${el.id}`,
-      id: `kode24_${el.id}`,
-    })
-  );
+  data.ads.forEach((el) => {
+    if (el.locations && el.locations[0]) {
+      jobs.push({
+        company: el.company.name,
+        dato: new Date(el.published).toLocaleDateString("en-GB"),
+        lokasjon: el.locations[0].toUpperCase(),
+        tekst: el.title,
+        link: `https://www.kode24.no/${el.id}`,
+        id: `kode24_${el.id}`,
+      });
+    }
+  });
 
   return jobs;
 }
 
-async function run() {
+async function getJobs() {
   const jobs = await getKode24Jobs();
 
   insertJobsToDB(jobs);
 }
 
-run();
+getJobs();

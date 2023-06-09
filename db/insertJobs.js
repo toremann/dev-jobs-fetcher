@@ -1,4 +1,5 @@
-const pool = require("./db/connect");
+require("dotenv").config();
+const pool = require("./connect");
 
 async function insertJobsToDB(jobs) {
     const client = await pool.connect();
