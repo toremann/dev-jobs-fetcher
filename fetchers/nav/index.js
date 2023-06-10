@@ -1,7 +1,4 @@
-require("dotenv").config({ path: "../../.env" });
-const cron = require("node-cron");
 const fetch = require("cross-fetch");
-const insertJobsToDB = require("../../db/insertJobs");
 
 async function getNavJobs() {
   const response1 = await fetch(
@@ -46,13 +43,4 @@ async function getNavJobs() {
   return jobs; // Return the array with data from data2
 }
 
-async function getJobs() {
-  const jobs = await getNavJobs();
-
-  insertJobsToDB(jobs, 'nav');
-}
-
-cron.schedule('0 * * * *', async () => {
-  getJobs();
-});
-
+module.exports = getNavJobs;
