@@ -15,10 +15,8 @@ async function getFinnJobs() {
     const data = await response.json();
 
     if (data.docs.length === 0) {
-      console.log("No more data");
       hasMoreData = false;
     } else {
-      console.log(`Page ${page} has data`);
       data.docs.forEach((el) =>
         jobs.push({
           company: el.company_name,
@@ -31,7 +29,6 @@ async function getFinnJobs() {
       );
       page++;
       const delay = Math.floor(Math.random() * 10) + 1;
-      console.log(`Waiting for ${delay} seconds...`);
       await new Promise((resolve) => setTimeout(resolve, delay * 1000));
     }
   }
