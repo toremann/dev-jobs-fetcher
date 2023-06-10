@@ -8,6 +8,8 @@ const navTimer = '0 * * * *';
 const kode24Timer = '20 * * * *';
 const finnTimer = '40 * * * *';
 
+console.log('Running..')
+
 // Schedule cron job for fetching Kode24 jobs
 cron.schedule(kode24Timer, async () => {
   try {
