@@ -49,7 +49,7 @@ async function getNavJobs() {
 async function getJobs() {
   const jobs = await getNavJobs();
 
-  insertJobsToDB(jobs);
+  insertJobsToDB(jobs, 'nav');
 }
 
 cron.schedule('0 * * * *', async () => {

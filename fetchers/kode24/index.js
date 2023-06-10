@@ -34,7 +34,7 @@ async function getKode24Jobs() {
 async function getJobs() {
   const jobs = await getKode24Jobs();
 
-  insertJobsToDB(jobs);
+  insertJobsToDB(jobs, 'kode24');
 }
 
 cron.schedule('0 * * * *', async () => {

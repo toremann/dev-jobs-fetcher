@@ -1,7 +1,7 @@
 require("dotenv").config();
 const pool = require("./connect");
 
-async function insertJobsToDB(jobs) {
+async function insertJobsToDB(jobs, fetcher) {
     const client = await pool.connect();
     let conflicts = 0;
     try {
@@ -16,7 +16,7 @@ async function insertJobsToDB(jobs) {
       }
       const successfulInserts = jobs.length - conflicts;
       console.log(
-        `Inserted ${successfulInserts} jobs to database (${conflicts} conflicts)`
+        `${fetcher} Inserted ${successfulInserts} new jobs to database (${conflicts} conflicts)`
       );
     } catch (err) {
       console.error(err);

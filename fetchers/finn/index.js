@@ -45,7 +45,7 @@ async function getFinnJobs() {
 async function getJobs() {
   const jobs = await getFinnJobs();
 
-  insertJobsToDB(jobs);
+  insertJobsToDB(jobs, 'finn');
 }
 
 cron.schedule('0 * * * *', async () => {

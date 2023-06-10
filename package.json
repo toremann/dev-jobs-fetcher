@@ -6,7 +6,7 @@
     "node-cron": "^3.0.2",
     "pg": "^8.11.0"
   },
-  "name": "dev-jobs",
+  "name": "dev-jobs-fetcher",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
