@@ -48,4 +48,6 @@ async function getJobs() {
   insertJobsToDB(jobs);
 }
 
-getJobs();
+cron.schedule('0 * * * *', async () => {
+  getJobs();
+});

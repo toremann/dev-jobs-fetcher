@@ -1,6 +1,7 @@
 require("dotenv").config({ path: "../../.env" });
 const fetch = require("cross-fetch");
 const insertJobsToDB = require("../../db/insertJobs");
+const cron = require("node-cron");
 
 async function getKode24Jobs() {
   const jobs = [];
@@ -36,4 +37,6 @@ async function getJobs() {
   insertJobsToDB(jobs);
 }
 
-getJobs();
+cron.schedule('0 * * * *', async () => {
+  getJobs();
+});

@@ -1,4 +1,5 @@
 require("dotenv").config({ path: "../../.env" });
+const cron = require("node-cron");
 const fetch = require("cross-fetch");
 const insertJobsToDB = require("../../db/insertJobs");
 
@@ -51,4 +52,7 @@ async function getJobs() {
   insertJobsToDB(jobs);
 }
 
-getJobs();
+cron.schedule('0 * * * *', async () => {
+  getJobs();
+});
+
