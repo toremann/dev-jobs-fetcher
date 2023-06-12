@@ -14,7 +14,7 @@ console.log('Running..')
 cron.schedule(kode24Timer, async () => {
   try {
     const jobs = await getKode24Jobs();
-    insertJobsToDB(jobs, 'kode24:');
+    insertJobsToDB(jobs, 'kode24');
   } catch (error) {
     console.error(error);
   }
@@ -24,7 +24,7 @@ cron.schedule(kode24Timer, async () => {
 cron.schedule(navTimer, async () => {
   try {
     const jobs = await getNavJobs();
-    insertJobsToDB(jobs, 'nav:');
+    insertJobsToDB(jobs, 'nav');
   } catch (error) {
     console.error(error);
   }
@@ -34,8 +34,20 @@ cron.schedule(navTimer, async () => {
 cron.schedule(finnTimer, async () => {
   try {
     const jobs = await getFinnJobs();
-    insertJobsToDB(jobs, 'finn:');
+    insertJobsToDB(jobs, 'finn');
   } catch (error) {
     console.error(error);
   }
 });
+
+// Test
+// async function runJobInsertion() {
+//   try {
+//     const jobs = await getKode24Jobs();
+//     await insertJobsToDB(jobs, 'kode24:');
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// runJobInsertion();
