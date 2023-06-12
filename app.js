@@ -39,15 +39,3 @@ cron.schedule(finnTimer, async () => {
     console.error(error);
   }
 });
-
-// Test
-// async function runJobInsertion() {
-//   try {
-//     const jobs = await getKode24Jobs();
-//     await insertJobsToDB(jobs, 'kode24:');
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// runJobInsertion();

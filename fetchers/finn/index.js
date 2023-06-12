@@ -23,7 +23,7 @@ async function getFinnJobs() {
           dato: new Date(el.timestamp).toLocaleDateString("en-GB"),
           lokasjon: el.location.toUpperCase(),
           tekst: el.heading,
-          link: el.ad_link,
+          link: `https://www.finn.no/job/fulltime/ad.html?finnkode=${el.ad_id}`,
           id: `finn_${el.ad_id}`,
         })
       );
