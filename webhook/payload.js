@@ -14,7 +14,6 @@ function generatePayload(insertedJobs, fetcher) {
       {
         color: color,
         fields: insertedJobs.map((job) => {
-          console.log('Mapping job:', job);
           return {
             name: job.company,
             value: `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link}`,
@@ -22,6 +21,9 @@ function generatePayload(insertedJobs, fetcher) {
         }),
       },
     ],
+    footer: {
+      text: `Source: ${fetcher}`
+    }
   };
 
   // console.log('Payload:', payload.embeds[0].fields);
