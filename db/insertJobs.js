@@ -23,7 +23,7 @@ async function insertJobsToDB(jobs, fetcher) {
       const successfulInserts = insertedJobs.length;
       console.log(
         `${fetcher} Inserted ${successfulInserts} new jobs to database (${conflicts} conflicts)`
-      );S
+      );
 
       if (successfulInserts > 0) {
         const payload = generatePayload(successfulInserts, insertedJobs, fetcher);
