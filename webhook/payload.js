@@ -9,6 +9,8 @@ function generatePayload(insertedJobs, fetcher) {
     color = 0xffa500; // Orange color for "kode24:"
   }
 
+  console.log('generating payload for: ', fetcher, 'jobs: ', insertedJobs.length)
+
   const payload = {
     embeds: [
       {
