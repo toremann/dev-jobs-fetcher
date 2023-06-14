@@ -9,7 +9,7 @@ function generatePayload(insertedJobs, fetcher) {
     color = 0xffa500; // Orange color for "kode24:"
   }
 
-  console.log('generating payload for:', fetcher, 'jobs:', insertedJobs.length);
+  console.log('Generating payload for:', fetcher, 'jobs:', insertedJobs.length);
 
   const payload = {
     embeds: [
@@ -28,7 +28,10 @@ function generatePayload(insertedJobs, fetcher) {
     ]
   };
 
-  // console.log('Payload:', payload.embeds[0].fields);
+  const payloadString = JSON.stringify(payload);
+  const payloadSize = payloadString.length;
+
+  console.log('Payload character count:', payloadSize, '<-- must not exceed 8,192 characters');
 
   return payload;
 }
