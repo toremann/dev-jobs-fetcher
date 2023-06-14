@@ -9,7 +9,7 @@ function generatePayload(insertedJobs, fetcher) {
     color = 0xffa500; // Orange color for "kode24:"
   }
 
-  console.log('generating payload for: ', fetcher, 'jobs: ', insertedJobs.length)
+  console.log('generating payload for:', fetcher, 'jobs:', insertedJobs.length);
 
   const payload = {
     embeds: [
@@ -21,11 +21,11 @@ function generatePayload(insertedJobs, fetcher) {
             value: `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link}`,
           };
         }),
-      },
-    ],
-    footer: {
-      text: `Source: ${fetcher}`
-    }
+        footer: {
+          text: `Source: ${fetcher}, amount: ${insertedJobs.length}`
+        }
+      }
+    ]
   };
 
   // console.log('Payload:', payload.embeds[0].fields);
