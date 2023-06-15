@@ -1,9 +1,11 @@
+require("dotenv").config();
+
 const puppeteer = require("puppeteer");
 const axios = require("axios");
 
 async function fetchToken() {
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);

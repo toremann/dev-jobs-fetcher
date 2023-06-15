@@ -6,12 +6,25 @@ async function insertCompanyInfoToDB(data) {
 
   try {
     const query = `
-        INSERT INTO your_table_name (
-          name, orgnr, phone, mobile, address, zip_code, post_place,
-          country_part, county, municipality, revenue, currency,
-          profit, employees, contact_person_name, contact_person_role
+        INSERT INTO companies (
+          name, 
+          orgnr, 
+          phone, 
+          mobile, 
+          address, 
+          zip_code, 
+          post_place,
+          country_part, 
+          county, 
+          municipality, 
+          revenue, 
+          currency,
+          profit, 
+          employees, 
+          contact_person_name, 
+          contact_person_role
         )
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
       `;
 
     const values = [
@@ -42,4 +55,4 @@ async function insertCompanyInfoToDB(data) {
   }
 }
 
-module.exports = insertCompanyInfoToDB
+module.exports = insertCompanyInfoToDB;
