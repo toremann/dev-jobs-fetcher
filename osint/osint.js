@@ -1,33 +1,41 @@
+const fetchToken = require('./getToken');
+const axios = require('axios');
+
 // Must match company and location
-const company = "Sopra Steria";
+const company = "Sopra+Steria";
 const location = "OSLO";
-const token = "bXvPhJVVcVDiPMDVY_jPI"
 
-fetch(
-  `https://beta.proff.no/_next/data/${token}/search.json?q=${company}`,
-  {
-    headers: {
-      accept: "*/*",
-    },
-  }
-)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data.pageProps.companiesByName.companies.location.county)
-    const companies = data.pageProps.companiesByName.companies;
-    const matchingCompany = companies.find((company) => company.name === company);
+(async () => {
+  try {
+    const token = await fetchToken();
 
-    if (matchingCompany) {
-      const matchingLocation = matchingCompany.locations.find(
-        (loc) => loc.county.toUpperCase() === location
-      );
-      if (matchingLocation) {
-        console.log(`Location: ${matchingLocation.county}`);
-      } else {
-        console.log(`No matching location found for ${company} in ${location}`);
-      }
+    console.log(`Using ${token} to fetch data..`);
+
+    const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${company}`;
+
+    console.log(testUrl);
+
+    const response = await axios.get(testUrl, {
+      headers: {
+        accept: "*/*",
+      },
+    });
+
+    const companies = response.data.pageProps.companiesByName.companies;
+
+    const filteredCompanies = companies.filter(company => {
+      console.log(`Finding company matching ${company} with location ${location}`)
+      const companyLocation = company.visitorAddress && company.visitorAddress.postPlace;
+      return companyLocation && companyLocation.toUpperCase() === location.toUpperCase();
+    });
+
+    if (filteredCompanies.length > 0) {
+      console.log(filteredCompanies[0]);
     } else {
-      console.log(`No matching company found for ${company}`);
+      console.log('No matching company found in the specified location.');
     }
-  })
-  .catch((error) => console.log(error));
+
+  } catch (error) {
+    console.log(error);
+  }
+})();
