@@ -1,8 +1,10 @@
+// Must match company and location
 const company = "Sopra Steria";
 const location = "OSLO";
+const token = "bXvPhJVVcVDiPMDVY_jPI"
 
 fetch(
-  "https://beta.proff.no/_next/data/bXvPhJVVcVDiPMDVY_jPI/search.json?q=Sopra+Steria",
+  `https://beta.proff.no/_next/data/${token}/search.json?q=${company}`,
   {
     headers: {
       accept: "*/*",

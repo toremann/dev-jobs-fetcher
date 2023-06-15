@@ -1,10 +1,12 @@
 {
   "type": "commonjs",
   "dependencies": {
+    "axios": "^1.4.0",
     "cross-fetch": "^3.1.6",
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
-    "pg": "^8.11.0"
+    "pg": "^8.11.0",
+    "puppeteer": "^20.7.1"
   },
   "name": "dev-jobs-fetcher",
   "version": "1.0.0",
