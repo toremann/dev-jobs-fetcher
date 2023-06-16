@@ -30,6 +30,9 @@ async function getCompanyData(company, location) {
       const selectedCompany = filteredCompanies[0];
       // console.log(selectedCompany);
       console.log('Antall ansatte:', selectedCompany.employees)
+
+      // todo:
+      // match location and employees to the salary data to give an guesstimate of salary
       
       // await insertCompanyInfoToDB(selectedCompany);
       // console.log("Data inserted into PostgreSQL database!");
