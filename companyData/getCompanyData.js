@@ -3,11 +3,7 @@ const fetchToken = require('./getToken');
 const insertCompanyInfoToDB = require('../db/insertCompanyInfo')
 const axios = require('axios');
 
-// Must match company and location
-const company = "Sopra Steria";
-const location = "OSLO";
-
-(async () => {
+async function getCompanyData(company, location) {
   try {
     const token = await fetchToken();
 
@@ -32,11 +28,11 @@ const location = "OSLO";
 
     if (filteredCompanies.length > 0) {
       const selectedCompany = filteredCompanies[0];
-      console.log(selectedCompany);
-      console.log('pg port', process.env.PG_PORT)
+      // console.log(selectedCompany);
+      console.log('Antall ansatte:', selectedCompany.employees)
       
-      await insertCompanyInfoToDB(selectedCompany);
-      console.log("Data inserted into PostgreSQL database!");
+      // await insertCompanyInfoToDB(selectedCompany);
+      // console.log("Data inserted into PostgreSQL database!");
     } else {
       console.log('No matching company found in the specified location.');
     }
@@ -44,4 +40,6 @@ const location = "OSLO";
   } catch (error) {
     console.log(error);
   }
-})();
+}
+
+getCompanyData('Kongsberg IT', 'Kongsberg')

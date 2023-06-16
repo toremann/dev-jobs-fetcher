@@ -4,6 +4,7 @@ const puppeteer = require("puppeteer");
 const axios = require("axios");
 
 async function fetchToken() {
+  console.log('Trying to get token..')
   try {
     const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
