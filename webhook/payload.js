@@ -16,6 +16,8 @@ function generatePayload(insertedJobs, fetcher) {
       {
         color: color,
         fields: insertedJobs.map((job) => {
+          const valueString = `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link} <-- max 1024 chars`;
+          console.log('fields.value character count:', valueString.length);
           return {
             name: job.company,
             value: `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link}`,
