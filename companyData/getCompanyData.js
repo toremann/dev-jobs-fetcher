@@ -29,7 +29,9 @@ async function getCompanyData(company, location) {
     if (filteredCompanies.length > 0) {
       const selectedCompany = filteredCompanies[0];
       // console.log(selectedCompany);
-      console.log('Antall ansatte:', selectedCompany.employees)
+      // console.log('Antall ansatte:', selectedCompany.employees)
+
+      console.log(selectedCompany)
 
       // todo:
       // match location and employees to the salary data to give an guesstimate of salary
@@ -45,4 +47,4 @@ async function getCompanyData(company, location) {
   }
 }
 
-getCompanyData('Kongsberg IT', 'Kongsberg')
+getCompanyData('Folk+AS', 'Ulset')
