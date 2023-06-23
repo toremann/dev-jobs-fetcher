@@ -3,8 +3,10 @@ const fs = require("fs");
 const puppeteer = require("puppeteer");
 const axios = require("axios");
 
-async function getToken() {
-  console.log('Trying to get token..')
+// if token is invalid, then we use this function to get a new token.
+
+async function getNewToken() {
+  console.log('Trying to get a fresh token..')
   try {
     const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
@@ -40,6 +42,8 @@ async function getToken() {
     const token = Array.from(desiredPortions).join(", ");
 
     console.log("token:", token);
+
+    // for testing, write the token to file (later write it to db)
     
     const tokenData = { token };
     const jsonToken = JSON.stringify(tokenData);
@@ -65,4 +69,4 @@ async function getToken() {
   }
 }
 
-module.exports = getToken;
+module.exports = getNewToken;
