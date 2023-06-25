@@ -56,4 +56,4 @@ async function getCompanyData(company, location) {
   }
 }
 
-getCompanyData('Kulturdirektoratet', 'Oslo')
+module.exports = getCompanyData

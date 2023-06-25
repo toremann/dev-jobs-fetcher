@@ -1,3 +1,5 @@
+const getCompanyData = require('../companyData/getCompanyData')
+
 function generatePayload(insertedJobs, fetcher) {
   let color = 0x00ff00; // Default color as green
 
@@ -18,6 +20,9 @@ function generatePayload(insertedJobs, fetcher) {
         fields: insertedJobs.map((job) => {
           const valueString = `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link} <-- max 1024 chars`;
           console.log('fields.value character count:', valueString.length);
+
+          // if shit hits the fan, remove this log
+          console.log(getCompanyData('salary data test', job.company, job.lokasjon))
           return {
             name: job.company,
             value: `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link}`,
@@ -29,6 +34,7 @@ function generatePayload(insertedJobs, fetcher) {
       }
     ]
   };
+
 
   const payloadString = JSON.stringify(payload);
   const payloadSize = payloadString.length;
