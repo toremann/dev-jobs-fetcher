@@ -1,0 +1,624 @@
+[
+  {
+    "location": "Oslo",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 838248.3764044944
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 1094035.294117647
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 961750.475490196
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 955736.8333333334
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 821833.930875576
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 845296.0650406504
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 863001.2048192772
+      }
+    ],
+    "avg_salary": 888747.0363790186
+  },
+  {
+    "location": "Innlandet",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 783944.4444444445
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 597500
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 736000
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 713618.8571428572
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 753928.5714285715
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 935000
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 807000
+      }
+    ],
+    "avg_salary": 750709.0169491526
+  },
+  {
+    "location": "Viken",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 892925.925925926
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 964757.8947368421
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 794727.2727272727
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 783000
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 779273.1282051282
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 792964.2857142857
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 792166.6666666666
+      }
+    ],
+    "avg_salary": 827597.1096774193
+  },
+  {
+    "location": "Vestland",
+    "employeeValues": [
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 788647.0588235294
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 776609.40625
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 766971.4285714285
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 847261.052631579
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 789254.1666666666
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 845788.8888888889
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 976050
+      }
+    ],
+    "avg_salary": 808512.9502262444
+  },
+  {
+    "location": "Troms og Finnmark",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 678675
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 737533.3333333334
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 651750
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 659534.1052631579
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 710000
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 743000
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 900000
+      }
+    ],
+    "avg_salary": 704742.1176470588
+  },
+  {
+    "location": "Trøndelag",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 739174.4186046511
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 834428.5714285715
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 798339.9069767442
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 733000
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 822361.1111111111
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 784090.9090909091
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 864500
+      }
+    ],
+    "avg_salary": 787175.7966101695
+  },
+  {
+    "location": "Rogaland",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 730062.0689655172
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 894794.1176470588
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 803333.3333333334
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 901466.6666666666
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 787661.7647058824
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 910307.6923076923
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 1164175
+      }
+    ],
+    "avg_salary": 847633.2191780822
+  },
+  {
+    "location": "Vestfold og Telemark",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 731114.2857142857
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 568333.3333333334
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 675000
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 817956.5217391305
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 842000
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 830000
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 790328
+      }
+    ],
+    "avg_salary": 763188.8461538461
+  },
+  {
+    "location": "Agder",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 712748.5263157894
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 671666.6666666666
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 781166.6666666666
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 770150
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 753366.6666666666
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 751400
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 990600
+      }
+    ],
+    "avg_salary": 761879.5632183908
+  },
+  {
+    "location": "Møre og Romsdal",
+    "employeeValues": [
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 709428.5714285715
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 867000
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 635400
+      },
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 655000
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 899000
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 734000
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 752500
+      }
+    ],
+    "avg_salary": 771215.1515151515
+  },
+  {
+    "location": "Nordland",
+    "employeeValues": [
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 577200
+      },
+      {
+        "range": {
+          "low": 10,
+          "high": 50
+        },
+        "value": 681714.2857142857
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 648000.4
+      },
+      {
+        "range": {
+          "low": 500,
+          "high": 1000
+        },
+        "value": 682333.3333333334
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 570000
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 836166.6666666666
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 783333.3333333334
+      }
+    ],
+    "avg_salary": 687952.4761904762
+  },
+  {
+    "location": "utlandet",
+    "employeeValues": [
+      {
+        "range": {
+          "high":  10
+        },
+        "value": 580500
+      },
+      {
+        "range": {
+          "low": 1000,
+          "high": 10000
+        },
+        "value": 1063250
+      },
+      {
+        "range": {
+          "low": 100,
+          "high": 500
+        },
+        "value": 1048250
+      },
+      {
+        "range": {
+          "low": 10000
+        },
+        "value": 925000
+      },
+      {
+        "range": {
+          "low": 50,
+          "high": 100
+        },
+        "value": 1870769
+      }
+    ],
+    "avg_salary": 1183754.75
+  }
+]

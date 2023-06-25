@@ -49,9 +49,6 @@ async function getNewToken() {
     const jsonToken = JSON.stringify(tokenData);
     fs.writeFileSync("token.json", jsonToken);
 
-    // Test token
-    const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=test`;
-    const response = await axios.get(testUrl);
 
     if (response.data.pageProps) {
       console.log("Test Response: ok!");
