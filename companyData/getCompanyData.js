@@ -2,6 +2,7 @@ require("dotenv").config({ path: "../.env"});
 const testToken = require('./testToken')
 const insertCompanyInfoToDB = require('../db/insertCompanyInfo')
 const axios = require('axios');
+const getAverageSalary = require('../lonn2023/getSalary')
 
 async function getCompanyData(company, location) {
   try {
@@ -30,11 +31,19 @@ async function getCompanyData(company, location) {
       const selectedCompany = filteredCompanies[0];
       // console.log(selectedCompany);
       // console.log('Antall ansatte:', selectedCompany.employees)
+      const employee = selectedCompany.employees
+      const location = selectedCompany.location.county
 
-      console.log(selectedCompany)
+      const salary = await getAverageSalary(employee, location)
 
-      // todo:
-      // match location and employees to the salary data to give an guesstimate of salary
+      const results = {
+        companyName: selectedCompany.name,
+        location: selectedCompany.location.county,
+        employeeAmount: selectedCompany.employees,
+        salary: Math.floor(salary)
+      }
+
+      console.log(results)
       
       // await insertCompanyInfoToDB(selectedCompany);
       // console.log("Data inserted into PostgreSQL database!");
@@ -47,4 +56,4 @@ async function getCompanyData(company, location) {
   }
 }
 
-getCompanyData('Folk+AS', 'Ulset')
+getCompanyData('Kulturdirektoratet', 'Oslo')
