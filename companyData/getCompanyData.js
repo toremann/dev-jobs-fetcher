@@ -1,11 +1,11 @@
 require("dotenv").config({ path: "../.env"});
-const fetchToken = require('./getToken');
+const testToken = require('./testToken')
 const insertCompanyInfoToDB = require('../db/insertCompanyInfo')
 const axios = require('axios');
 
 async function getCompanyData(company, location) {
   try {
-    const token = await fetchToken();
+    const token = await testToken();
 
     console.log(`Using ${token} to fetch data..`);
 
@@ -43,7 +43,7 @@ async function getCompanyData(company, location) {
     }
 
   } catch (error) {
-    console.log(error);
+    console.log('getCompanyData:', error.message);
   }
 }
 

@@ -1,29 +1,32 @@
 require("dotenv").config();
-const getStoredToken = require("./getStoredToken");
+const readTokenFromFile = require("./getStoredToken");
+const getNewToken = require("./getNewToken");
 const axios = require("axios");
 
 async function testToken() {
   try {
-    const token = await getStoredToken();
+    const token = await readTokenFromFile();
     const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=test`;
     const response = await axios.get(testUrl);
 
-    console.log(response.status); // Log the entire response object
-
-    if (response.status === 404) {
-      console.log("Invalid token");
-      return false;
-    }
-
     if (response.status === 200) {
-      console.log("Test Response: ok!");
-      return true;
+      console.log("testToken: Token is valid!");
+      return token;
     }
   } catch (error) {
-    // console.log("Something went wrong in test:", error.status);
+    console.log("testToken is invalid: Error", error.response.status);
+    handleInvalidToken();
   }
 }
 
-testToken();
+async function handleInvalidToken() {
+  try {
+    const newToken = await getNewToken();
+    console.log('Fetching new token!')
+    await testToken(newToken);
+  } catch (error) {
+    console.error("Failed to retrieve a new token:", error);
+  }
+}
 
-// module.exports = testToken;
+module.exports = testToken
