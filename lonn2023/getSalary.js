@@ -39,5 +39,5 @@ function getAverageSalary(jsonFilePath, number, location) {
 }
 
 // Example usage:
-const avgSalary = getAverageSalary('reformatted_data.json', 250, 'Oslo');
-console.log('Average Salary for location', avgSalary);
+const avgSalary = getAverageSalary('data.json', 250, 'Oslo');
+console.log('Average Salary', avgSalary);
