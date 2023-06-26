@@ -11,7 +11,9 @@ async function getCompanyData(company, location) {
 
     console.log(`Using ${token} to fetch data..`);
 
-    const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${company}`;
+    const formattedCompany = company.replace(/\s+/g, '+');
+
+    const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${formattedCompany}`;
 
     console.log(testUrl);
 
