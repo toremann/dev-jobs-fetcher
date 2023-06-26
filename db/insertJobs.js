@@ -3,6 +3,7 @@ const pool = require("./connect");
 const sendWebhook = require("../webhook/hook");
 const generatePayload = require("../webhook/payload");
 const getCompanyData = require("../companyData/getCompanyData");
+const testToken = require("../companyData/testToken");
 
 async function insertJobsToDB(jobs, fetcher) {
   const client = await pool.connect();
@@ -21,12 +22,24 @@ async function insertJobsToDB(jobs, fetcher) {
       }
     }
 
-    // TEST LOOP
-    for (let job of insertedJobs) {
-      const companyData = await getCompanyData(job.company, job.lokasjon);
+    // Get the token using testToken
+    const token = await testToken();
+
+    // Set the token for getCompanyData
+    getCompanyData.setToken(token);
+
+    // Create an array of promises for fetching company data
+    const companyDataPromises = insertedJobs.map((job) =>
+      getCompanyData(job.company, job.lokasjon)
+    );
+
+    const companyDataResults = await Promise.all(companyDataPromises);
+
+    for (let i = 0; i < insertedJobs.length; i++) {
+      const job = insertedJobs[i];
+      const companyData = companyDataResults[i];
       console.log("salary test: ", job.company, companyData);
     }
-    
 
     if (insertedJobs.length > 0) {
       const payload = generatePayload(insertedJobs, fetcher);

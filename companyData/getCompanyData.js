@@ -1,12 +1,13 @@
 require("dotenv").config({ path: "../.env"});
 const testToken = require('./testToken')
+const getStoredToken = require('./getStoredToken')
 const insertCompanyInfoToDB = require('../db/insertCompanyInfo')
 const axios = require('axios');
 const getAverageSalary = require('../lonn2023/getSalary')
 
 async function getCompanyData(company, location) {
   try {
-    const token = await testToken();
+    const token = await getStoredToken();
 
     console.log(`Using ${token} to fetch data..`);
 
