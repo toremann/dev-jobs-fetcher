@@ -1,5 +1,5 @@
-require("dotenv").config();
 const fs = require("fs");
+const path = require("path");
 const puppeteer = require("puppeteer");
 const axios = require("axios");
 
@@ -40,10 +40,12 @@ async function getToken() {
     const token = Array.from(desiredPortions).join(", ");
 
     console.log("token:", token);
-    
+
     const tokenData = { token };
     const jsonToken = JSON.stringify(tokenData);
-    fs.writeFileSync("token.json", jsonToken);
+
+    const filePath = path.resolve(__dirname, "token.json");
+    fs.writeFileSync(filePath, jsonToken);
 
     // Test token
     const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=test`;
