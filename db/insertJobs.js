@@ -22,12 +22,6 @@ async function insertJobsToDB(jobs, fetcher) {
       }
     }
 
-    // Get the token using testToken
-    const token = await testToken();
-
-    // Set the token for getCompanyData
-    getCompanyData.setToken(token);
-
     // Create an array of promises for fetching company data
     const companyDataPromises = insertedJobs.map((job) =>
       getCompanyData(job.company, job.lokasjon)
