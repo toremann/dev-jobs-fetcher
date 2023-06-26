@@ -1,7 +1,7 @@
 require("dotenv").config();
 const fs = require("fs");
+const path = require("path")
 const puppeteer = require("puppeteer");
-const axios = require("axios");
 
 // if token is invalid, then we use this function to get a new token.
 
@@ -9,7 +9,7 @@ async function getNewToken() {
   console.log('Trying to get a fresh token..')
   try {
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: "new",
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
@@ -50,13 +50,17 @@ async function getNewToken() {
 
     const token = Array.from(desiredPortions).join(", ");
 
-    console.log("token:", token);
+    console.log("new token:", token);
 
     // for testing, write the token to file (later write it to db)
     
     const tokenData = { token };
     const jsonToken = JSON.stringify(tokenData);
-    fs.writeFileSync("token.json", jsonToken);
+
+    const filePath = path.join(__dirname, "token.json");
+
+    fs.writeFileSync(filePath, jsonToken);
+    console.log('Wrote new token to file:', jsonToken)
 
 
     if (response.data.pageProps) {
