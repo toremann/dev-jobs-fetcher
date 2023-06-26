@@ -15,15 +15,18 @@ async function insertJobsToDB(jobs, fetcher) {
         "INSERT INTO jobs(id, company, dato, lokasjon, tekst, link) VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT (id) DO NOTHING",
         [job.id, job.company, job.dato, job.lokasjon, job.tekst, job.link]
       );
-      // TEST
-      const companyData = await getCompanyData(job.company, job.lokasjon);
 
-      // TEST
-      console.log("salary test:", companyData);
       if (result.rowCount !== 0) {
         insertedJobs.push(job);
       }
     }
+
+    // TEST LOOP
+    for (let job of insertedJobs) {
+      const companyData = await getCompanyData(job.company, job.lokasjon);
+      console.log("salary test: ", job.company, companyData);
+    }
+    
 
     if (insertedJobs.length > 0) {
       const payload = generatePayload(insertedJobs, fetcher);
