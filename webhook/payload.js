@@ -22,7 +22,7 @@ function generatePayload(insertedJobs, fetcher) {
           console.log('fields.value character count:', valueString.length);
 
           // if shit hits the fan, remove this log
-          console.log(getCompanyData('salary data test', job.company, job.lokasjon))
+          // console.log(getCompanyData('salary data test', job.company, job.lokasjon))
           return {
             name: job.company,
             value: `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link}`,
