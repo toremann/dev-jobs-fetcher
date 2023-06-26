@@ -8,7 +8,16 @@ const axios = require("axios");
 async function getNewToken() {
   console.log('Trying to get a fresh token..')
   try {
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--window-size=1652,996",
+      ],
+    });
+
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);
