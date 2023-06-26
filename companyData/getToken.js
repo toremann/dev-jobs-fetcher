@@ -6,7 +6,19 @@ const axios = require("axios");
 async function getToken() {
   console.log('Trying to get token..')
   try {
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        // Required for Docker version of Puppeteer
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        // This will write shared memory files into /tmp instead of /dev/shm,
+        // because Docker’s default for /dev/shm is 64MB
+        "--disable-dev-shm-usage",
+        "--window-size=1652,996",
+      ],
+    });
+    
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);
