@@ -32,7 +32,7 @@ async function insertJobsToDB(jobs, fetcher) {
     for (let i = 0; i < insertedJobs.length; i++) {
       const job = insertedJobs[i];
       const companyData = companyDataResults[i];
-      console.log("salary test: ", job.company, companyData);
+      console.log("salary test: ", job.company, companyData.salary);
     }
 
     if (insertedJobs.length > 0) {

@@ -50,7 +50,7 @@ async function getCompanyData(company, location) {
         salary: Math.floor(salary)
       }
 
-      console.log(results)
+      console.log('getCompanyData: ', results)
       
       // await insertCompanyInfoToDB(selectedCompany);
       // console.log("Data inserted into PostgreSQL database!");
