@@ -15,7 +15,7 @@ async function getCompanyData(company, location) {
 
     const formattedCompany = company.replace(/\s+/g, '+');
 
-    console.log('regex: ', formattedCompany)
+    console.log('formatted: ', formattedCompany)
 
     const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${formattedCompany}`;
 
@@ -52,8 +52,7 @@ async function getCompanyData(company, location) {
 
       console.log('getCompanyData: ', results)
       
-      // await insertCompanyInfoToDB(selectedCompany);
-      // console.log("Data inserted into PostgreSQL database!");
+      return results
     } else {
       console.log('No matching company found in the specified location.');
     }

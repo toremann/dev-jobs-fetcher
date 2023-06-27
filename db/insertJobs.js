@@ -27,11 +27,15 @@ async function insertJobsToDB(jobs, fetcher) {
       getCompanyData(job.company, job.lokasjon)
     );
 
-    console.log('data to get salary: ', companyDataPromises)
-
-    // const companyDataResults = await Promise.all(companyDataPromises);
-
-    // console.log('Promise:', companyDataResults)
+    Promise.all(companyDataPromises)
+      .then((results) => {
+        results.forEach((data) => {
+          console.log(data);
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     if (insertedJobs.length > 0) {
       const payload = generatePayload(insertedJobs, fetcher);
