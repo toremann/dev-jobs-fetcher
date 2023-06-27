@@ -29,10 +29,12 @@ async function insertJobsToDB(jobs, fetcher) {
 
     const companyDataResults = await Promise.all(companyDataPromises);
 
+    console.log('outside loop', companyDataResults)
+
     for (let i = 0; i < insertedJobs.length; i++) {
       const job = insertedJobs[i];
       const companyData = companyDataResults[i];
-      console.log("salary test: ", job.company, 'CDATA', job);
+      console.log("salary test: ", job.company, 'CDATA inside loop', companyData);
     }
 
     if (insertedJobs.length > 0) {
