@@ -5,17 +5,11 @@ const insertCompanyInfoToDB = require('../db/insertCompanyInfo')
 const axios = require('axios');
 const getAverageSalary = require('../lonn2023/getSalary')
 
-async function getCompanyData(company, location) {
+async function getEmployeeAmount(company, location) {
   try {
     const token = await getStoredToken();
 
-    console.log(`Using ${token} to fetch data..`);
-
-    console.log('format this: ', company)
-
     const formattedCompany = company.replace(/\s+/g, '+');
-
-    console.log('formatted: ', formattedCompany)
 
     const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${formattedCompany}`;
 
@@ -36,30 +30,32 @@ async function getCompanyData(company, location) {
 
     if (filteredCompanies.length > 0) {
       const selectedCompany = filteredCompanies[0];
-      // console.log(selectedCompany);
-      // console.log('Antall ansatte:', selectedCompany.employees)
-      const employee = selectedCompany.employees
+      const employeeAmount = selectedCompany.employees
       const location = selectedCompany.location.county
 
-      const salary = await getAverageSalary(employee, location)
+      // const salary = await getAverageSalary(employeeAmount, location)
 
-      const results = {
-        companyName: selectedCompany.name,
-        location: selectedCompany.location.county,
-        employeeAmount: selectedCompany.employees,
-        salary: Math.floor(salary)
-      }
+      // const results = {
+      //   companyName: selectedCompany.name,
+      //   location: selectedCompany.location.county,
+      //   employeeAmount: selectedCompany.employees,
+      //   salary: Math.floor(salary)
+      // }
 
-      console.log('getCompanyData: ', results)
+      // console.log('getCompanyData: ', results)
+
+      // console.log('amount of employees:', employeeAmount)
       
-      return results
+      return employeeAmount
     } else {
-      console.log('No matching company found in the specified location.');
+      console.log(`No match found for ${company} with the location: ${location}`);
     }
 
   } catch (error) {
-    console.log('getCompanyData:', error.message);
+    console.log('getEmployeeAmount:', error.message);
   }
 }
 
-module.exports = getCompanyData
+// getEmployeeAmount('Norsk Tipping AS', 'Hamar')
+
+module.exports = getEmployeeAmount

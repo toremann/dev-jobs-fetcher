@@ -1,20 +1,19 @@
 const fs = require("fs");
 const path = require("path");
 
-function getAverageSalary(employees, location) {
-  // Get the absolute file path for data.json
+async function getAverageSalary(employees, location) {
+  if (employees === null || employees === undefined || isNaN(employees)) {
+    return "Invalid employees value.";
+  }
+
   const filePath = path.join(__dirname, "data.json");
 
-  // Read the JSON file
   const jsonData = fs.readFileSync(filePath, "utf8");
 
-  // Parse the JSON data
   const dataArray = JSON.parse(jsonData);
 
-  // Find the data object for the specified location
-  const data = dataArray.find((obj) => obj.location === location);
+  const data = dataArray.find((obj) => obj.location.toUpperCase() === location.toUpperCase());
 
-  // Check if the data object exists
   if (!data) {
     return "Location not found.";
   }
@@ -31,17 +30,13 @@ function getAverageSalary(employees, location) {
     }
   });
 
-  // Check if the employee value object exists
   if (!employeeValueObj) {
     return "Employee range not found.";
   }
 
-  // Get the average salary from the employee value object
-  const averageSalary = employeeValueObj.value;
+  const averageSalary = Math.floor(employeeValueObj.value);
 
   return averageSalary;
 }
-
-// Example usage:
 
 module.exports = getAverageSalary;

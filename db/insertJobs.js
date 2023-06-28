@@ -2,8 +2,6 @@ require("dotenv").config();
 const pool = require("./connect");
 const sendWebhook = require("../webhook/hook");
 const generatePayload = require("../webhook/payload");
-const getCompanyData = require("../companyData/getCompanyData");
-const testToken = require("../companyData/testToken");
 
 async function insertJobsToDB(jobs, fetcher) {
   const client = await pool.connect();
@@ -21,21 +19,6 @@ async function insertJobsToDB(jobs, fetcher) {
         insertedJobs.push(job);
       }
     }
-
-    // Create an array of promises for fetching company data
-    const companyDataPromises = insertedJobs.map((job) =>
-      getCompanyData(job.company, job.lokasjon)
-    );
-
-    Promise.all(companyDataPromises)
-      .then((results) => {
-        results.forEach((data) => {
-          console.log(data);
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
 
     if (insertedJobs.length > 0) {
       const payload = generatePayload(insertedJobs, fetcher);
