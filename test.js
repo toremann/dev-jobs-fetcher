@@ -20,6 +20,7 @@ async function executeAsyncFlow() {
 
     const jobsWithEmployeeAmounts = await Promise.all(employeeAmountPromises);
 
+    // To get salary from kode24 data we need company employee amount and fylke
     const salaryPromises = jobsWithEmployeeAmounts.map(async (job) => {
       const fylke = await searchFylkeByKommune(job.lokasjon);
       const salary = await getAverageSalary(job.employeeAmount, fylke);

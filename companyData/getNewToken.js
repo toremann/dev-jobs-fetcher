@@ -51,18 +51,16 @@ async function getNewToken() {
 
     const token = Array.from(desiredPortions).join(", ");
 
-    console.log("new token:", token);
-
     // for testing, write the token to file (later write it to db)
     insertTokenToDB(token)
     
+    // write to local
     const tokenData = { token };
     const jsonToken = JSON.stringify(tokenData);
 
     const filePath = path.join(__dirname, "token.json");
 
     fs.writeFileSync(filePath, jsonToken);
-    console.log('Wrote new token to file:', jsonToken)
 
     await browser.close();
 
@@ -72,6 +70,6 @@ async function getNewToken() {
   }
 }
 
-getNewToken()
+// getNewToken()
 
-// module.exports = getNewToken;
+module.exports = getNewToken;
