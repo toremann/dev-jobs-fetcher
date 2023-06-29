@@ -28,6 +28,7 @@ async function getNewToken() {
     page.on("request", (interceptedRequest) => {
       const url = interceptedRequest.url();
 
+      // intercept request and get correct path
       const desiredPortionRegex = /\/_next\/static\/([^\/]+)/;
       const matches = url.match(desiredPortionRegex);
       if (matches) {

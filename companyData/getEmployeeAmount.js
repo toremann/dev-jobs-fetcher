@@ -11,8 +11,6 @@ async function getEmployeeAmount(company, location) {
 
     const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${formattedCompany}`;
 
-    console.log(testUrl);
-
     const response = await axios.get(testUrl, {
       headers: {
         accept: "*/*",

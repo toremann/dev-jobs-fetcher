@@ -3,6 +3,7 @@ const insertJobsToDB = require('./db/insertJobs');
 const getNavJobs = require("./fetchers/nav");
 const getKode24Jobs = require("./fetchers/kode24");
 const getFinnJobs = require("./fetchers/finn");
+const getJobSalary = require("./salary/getSalary")
 
 const navTimer = '0 * * * *';
 const kode24Timer = '20 * * * *';
@@ -14,7 +15,10 @@ console.log('Running..')
 cron.schedule(kode24Timer, async () => {
   try {
     const jobs = await getKode24Jobs();
-    insertJobsToDB(jobs, 'kode24');
+    const insertedJobs = await insertJobsToDB(jobs, 'kode24');
+
+    const jobSalaries = await getJobSalary(insertedJobs);
+    console.log(jobSalaries); 
   } catch (error) {
     console.error(error);
   }
@@ -24,7 +28,10 @@ cron.schedule(kode24Timer, async () => {
 cron.schedule(navTimer, async () => {
   try {
     const jobs = await getNavJobs();
-    insertJobsToDB(jobs, 'nav');
+    const insertedJobs = await insertJobsToDB(jobs, 'nav');
+
+    const jobSalaries = await getJobSalary(insertedJobs);
+    console.log(jobSalaries); 
   } catch (error) {
     console.error(error);
   }
@@ -34,7 +41,10 @@ cron.schedule(navTimer, async () => {
 cron.schedule(finnTimer, async () => {
   try {
     const jobs = await getFinnJobs();
-    insertJobsToDB(jobs, 'finn');
+    const insertedJobs = await insertJobsToDB(jobs, 'finn');
+
+    const jobSalaries = await getJobSalary(insertedJobs);
+    console.log(jobSalaries); 
   } catch (error) {
     console.error(error);
   }

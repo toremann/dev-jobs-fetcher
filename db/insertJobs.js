@@ -24,6 +24,8 @@ async function insertJobsToDB(jobs, fetcher) {
       const payload = generatePayload(insertedJobs, fetcher);
       await sendWebhook(payload);
     }
+
+    return insertedJobs; 
   } catch (err) {
     console.error(err);
   } finally {

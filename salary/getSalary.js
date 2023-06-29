@@ -1,18 +1,13 @@
-const getKode24Jobs = require("../fetchers/kode24");
 const getEmployeeAmount = require("../companyData/getEmployeeAmount");
 const getAverageSalary = require("../lonn2023/getAvarageSalary");
-const searchFylkeByKommune = require("../lonn2023/getFylke")
+const searchFylkeByKommune = require("../lonn2023/getFylke");
 
-async function getJobSalary() {
+async function getJobSalary(insertedJobs) {
   try {
-    // Get the jobs
-    const kode24 = await getKode24Jobs();
-
-    const employeeAmountPromises = kode24.map(async (job) => {
-      // Get the employee amount of company
+    const employeeAmountPromises = insertedJobs.map(async (job) => {
       const employeeAmount = await getEmployeeAmount(job.company, job.lokasjon);
       return {
-        ...job, 
+        ...job,
         employeeAmount
       };
     });
@@ -23,7 +18,7 @@ async function getJobSalary() {
     const salaryPromises = jobsWithEmployeeAmounts.map(async (job) => {
       const fylke = await searchFylkeByKommune(job.lokasjon);
       const salary = await getAverageSalary(job.employeeAmount, fylke);
-      
+
       return {
         ...job,
         avgSalary: salary,
@@ -32,11 +27,10 @@ async function getJobSalary() {
 
     const resolveSalary = await Promise.all(salaryPromises);
 
-    // Return all the shit
-    console.log(resolveSalary);
+    return resolveSalary;
   } catch (error) {
     console.error("An error occurred:", error);
   }
 }
 
-getJobSalary();
+module.exports = getJobSalary;
