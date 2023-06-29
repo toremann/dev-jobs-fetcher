@@ -2,6 +2,7 @@ require("dotenv").config();
 const fs = require("fs");
 const path = require("path")
 const puppeteer = require("puppeteer");
+const insertTokenToDB = require('../db/insertToken')
 
 // if token is invalid, then we use this function to get a new token.
 
@@ -53,6 +54,7 @@ async function getNewToken() {
     console.log("new token:", token);
 
     // for testing, write the token to file (later write it to db)
+    insertTokenToDB(token)
     
     const tokenData = { token };
     const jsonToken = JSON.stringify(tokenData);
@@ -70,6 +72,6 @@ async function getNewToken() {
   }
 }
 
-// getNewToken()
+getNewToken()
 
-module.exports = getNewToken;
+// module.exports = getNewToken;
