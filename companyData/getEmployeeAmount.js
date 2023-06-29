@@ -32,7 +32,7 @@ async function getEmployeeAmount(company, location) {
       
       return employeeAmount
     } else {
-      console.log(`No match found for ${company} with the location: ${location}`);
+      return `No match found for ${company} with the location: ${location}`
     }
 
   } catch (error) {

@@ -1,9 +1,9 @@
-const getKode24Jobs = require("./fetchers/kode24");
-const getEmployeeAmount = require("./companyData/getEmployeeAmount");
-const getAverageSalary = require("./lonn2023/getSalary");
-const searchFylkeByKommune = require("./lonn2023/getFylke")
+const getKode24Jobs = require("../fetchers/kode24");
+const getEmployeeAmount = require("../companyData/getEmployeeAmount");
+const getAverageSalary = require("../lonn2023/getAvarageSalary");
+const searchFylkeByKommune = require("../lonn2023/getFylke")
 
-async function executeAsyncFlow() {
+async function getJobSalary() {
   try {
     // Get the jobs
     const kode24 = await getKode24Jobs();
@@ -12,9 +12,8 @@ async function executeAsyncFlow() {
       // Get the employee amount of company
       const employeeAmount = await getEmployeeAmount(job.company, job.lokasjon);
       return {
-        company: job.company,
-        lokasjon: job.lokasjon,
-        employeeAmount: employeeAmount,
+        ...job, 
+        employeeAmount
       };
     });
 
@@ -26,10 +25,7 @@ async function executeAsyncFlow() {
       const salary = await getAverageSalary(job.employeeAmount, fylke);
       
       return {
-        company: job.company,
-        lokasjon: job.lokasjon,
-        fylke: fylke,
-        employeeAmount: job.employeeAmount,
+        ...job,
         avgSalary: salary,
       };
     });
@@ -43,4 +39,4 @@ async function executeAsyncFlow() {
   }
 }
 
-executeAsyncFlow();
+getJobSalary();
