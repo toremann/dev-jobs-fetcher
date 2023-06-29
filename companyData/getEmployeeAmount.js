@@ -1,9 +1,7 @@
 require("dotenv").config({ path: "../.env"});
 const testToken = require('./testToken')
 const getStoredToken = require('./getStoredToken')
-const insertCompanyInfoToDB = require('../db/insertCompanyInfo')
 const axios = require('axios');
-const getAverageSalary = require('../lonn2023/getSalary')
 
 async function getEmployeeAmount(company, location) {
   try {
@@ -31,20 +29,6 @@ async function getEmployeeAmount(company, location) {
     if (filteredCompanies.length > 0) {
       const selectedCompany = filteredCompanies[0];
       const employeeAmount = selectedCompany.employees
-      const location = selectedCompany.location.county
-
-      // const salary = await getAverageSalary(employeeAmount, location)
-
-      // const results = {
-      //   companyName: selectedCompany.name,
-      //   location: selectedCompany.location.county,
-      //   employeeAmount: selectedCompany.employees,
-      //   salary: Math.floor(salary)
-      // }
-
-      // console.log('getCompanyData: ', results)
-
-      // console.log('amount of employees:', employeeAmount)
       
       return employeeAmount
     } else {

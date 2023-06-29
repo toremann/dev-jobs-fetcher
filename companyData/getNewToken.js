@@ -62,15 +62,6 @@ async function getNewToken() {
     fs.writeFileSync(filePath, jsonToken);
     console.log('Wrote new token to file:', jsonToken)
 
-
-    if (response.data.pageProps) {
-      console.log("Test Response: ok!");
-    } else {
-      console.log(
-        "Test Response failed: PageProps field is missing in the response."
-      );
-    }
-
     await browser.close();
 
     return token;
@@ -78,5 +69,7 @@ async function getNewToken() {
     console.error("Error:", error);
   }
 }
+
+// getNewToken()
 
 module.exports = getNewToken;

@@ -1,6 +1,7 @@
 const getKode24Jobs = require("./fetchers/kode24");
 const getEmployeeAmount = require("./companyData/getEmployeeAmount");
 const getAverageSalary = require("./lonn2023/getSalary");
+const searchFylkeByKommune = require("./lonn2023/getFylke")
 
 async function executeAsyncFlow() {
   try {
@@ -20,12 +21,15 @@ async function executeAsyncFlow() {
     const jobsWithEmployeeAmounts = await Promise.all(employeeAmountPromises);
 
     const salaryPromises = jobsWithEmployeeAmounts.map(async (job) => {
-      const salary = await getAverageSalary(job.employeeAmount, job.lokasjon);
+      const fylke = await searchFylkeByKommune(job.lokasjon);
+      const salary = await getAverageSalary(job.employeeAmount, fylke);
+      
       return {
         company: job.company,
         lokasjon: job.lokasjon,
+        fylke: fylke,
         employeeAmount: job.employeeAmount,
-        salary: salary,
+        avgSalary: salary,
       };
     });
 
