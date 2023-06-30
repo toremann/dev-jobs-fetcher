@@ -29,6 +29,6 @@ async function handleInvalidToken() {
   }
 }
 
-testToken()
+// testToken()
 
 // module.exports = testToken

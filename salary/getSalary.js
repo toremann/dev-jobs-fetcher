@@ -3,8 +3,6 @@ const getAverageSalary = require("../lonn2023/getAvarageSalary");
 const searchFylkeByKommune = require("../lonn2023/getFylke");
 
 async function getJobSalary(insertedJobs) {
-  console.log('getJobSalary: ', insertedJobs.length())
-
   try {
     const employeeAmountPromises = insertedJobs.map(async (job) => {
       const employeeAmount = await getEmployeeAmount(job.company, job.lokasjon);
@@ -28,6 +26,8 @@ async function getJobSalary(insertedJobs) {
     });
 
     const resolveSalary = await Promise.all(salaryPromises);
+
+    console.log("Length of resolveSalary array:", resolveSalary.length);
 
     return resolveSalary;
   } catch (error) {
