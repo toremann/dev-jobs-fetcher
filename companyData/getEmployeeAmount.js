@@ -4,6 +4,8 @@ const getStoredToken = require('./getStoredToken')
 const axios = require('axios');
 
 async function getEmployeeAmount(company, location) {
+  console.log('getEmployeeAmount for: ', company, location);
+
   try {
     const token = await getStoredToken();
 
