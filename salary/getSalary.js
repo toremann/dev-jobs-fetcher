@@ -3,6 +3,8 @@ const getAverageSalary = require("../lonn2023/getAvarageSalary");
 const searchFylkeByKommune = require("../lonn2023/getFylke");
 
 async function getJobSalary(insertedJobs) {
+  console.log('getJobSalary: ', insertedJobs.length())
+
   try {
     const employeeAmountPromises = insertedJobs.map(async (job) => {
       const employeeAmount = await getEmployeeAmount(job.company, job.lokasjon);

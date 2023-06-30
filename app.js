@@ -1,24 +1,26 @@
 const cron = require("node-cron");
-const insertJobsToDB = require('./db/insertJobs');
+const insertJobsToDB = require("./db/insertJobs");
 const getNavJobs = require("./fetchers/nav");
 const getKode24Jobs = require("./fetchers/kode24");
 const getFinnJobs = require("./fetchers/finn");
-const getJobSalary = require("./salary/getSalary")
+const getJobSalary = require("./salary/getSalary");
 
-const navTimer = '0 * * * *';
-const kode24Timer = '20 * * * *';
-const finnTimer = '40 * * * *';
+const navTimer = "0 * * * *";
+const kode24Timer = "20 * * * *";
+const finnTimer = "40 * * * *";
 
-console.log('Running..')
+console.log("Running..");
 
 // Schedule cron job for fetching Kode24 jobs
 cron.schedule(kode24Timer, async () => {
   try {
+    // Get job listings
     const jobs = await getKode24Jobs();
-    const insertedJobs = await insertJobsToDB(jobs, 'kode24');
-
+    // Filter and insert to database
+    const insertedJobs = await insertJobsToDB(jobs, "kode24");
+    // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
-    console.log(jobSalaries); 
+    console.log(jobSalaries);
   } catch (error) {
     console.error(error);
   }
@@ -27,11 +29,13 @@ cron.schedule(kode24Timer, async () => {
 // Schedule cron job for fetching NAV jobs
 cron.schedule(navTimer, async () => {
   try {
+    // Get job listings
     const jobs = await getNavJobs();
-    const insertedJobs = await insertJobsToDB(jobs, 'nav');
-
+    // Filter and insert to database
+    const insertedJobs = await insertJobsToDB(jobs, "nav");
+    // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
-    console.log(jobSalaries); 
+    console.log(jobSalaries);
   } catch (error) {
     console.error(error);
   }
@@ -40,11 +44,13 @@ cron.schedule(navTimer, async () => {
 // Schedule cron job for fetching Finn jobs
 cron.schedule(finnTimer, async () => {
   try {
+    // Get job listings
     const jobs = await getFinnJobs();
-    const insertedJobs = await insertJobsToDB(jobs, 'finn');
-
+    // Filter and insert to database
+    const insertedJobs = await insertJobsToDB(jobs, "finn");
+    // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
-    console.log(jobSalaries); 
+    console.log(jobSalaries);
   } catch (error) {
     console.error(error);
   }

@@ -1,6 +1,8 @@
 require("dotenv").config();
 const pool = require("./connect");
 
+// NOT IN USE
+
 async function insertCompanyInfoToDB(data) {
   const client = await pool.connect();
 

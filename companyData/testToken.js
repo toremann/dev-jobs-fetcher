@@ -15,7 +15,7 @@ async function testToken() {
     }
   } catch (error) {
     console.log("testToken is invalid: Error", error.response.status);
-    handleInvalidToken();
+    // handleInvalidToken();
   }
 }
 
@@ -29,4 +29,6 @@ async function handleInvalidToken() {
   }
 }
 
-module.exports = testToken
+testToken()
+
+// module.exports = testToken
