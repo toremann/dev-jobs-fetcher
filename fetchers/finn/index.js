@@ -17,16 +17,20 @@ async function getFinnJobs() {
     if (data.docs.length === 0) {
       hasMoreData = false;
     } else {
-      data.docs.forEach((el) =>
-        jobs.push({
-          company: el.company_name,
-          dato: new Date(el.timestamp).toLocaleDateString("en-GB"),
-          lokasjon: el.location.toUpperCase(),
-          tekst: el.heading,
-          link: `https://www.finn.no/job/fulltime/ad.html?finnkode=${el.ad_id}`,
-          id: `finn_${el.ad_id}`,
-        })
-      );
+      data.docs.forEach((el) => {
+        if (el.company_name !== undefined) {
+          jobs.push({
+            company: el.company_name,
+            dato: new Date(el.timestamp).toLocaleDateString("en-GB"),
+            lokasjon: el.location.toUpperCase(),
+            tekst: el.heading,
+            link: `https://www.finn.no/job/fulltime/ad.html?finnkode=${el.ad_id}`,
+            id: `finn_${el.ad_id}`,
+          });
+        } else {
+          console.log("Skipped job with undefined company_name:", el);
+        }
+      });
       page++;
       const delay = Math.floor(Math.random() * 10) + 1;
       await new Promise((resolve) => setTimeout(resolve, delay * 1000));
@@ -36,4 +40,4 @@ async function getFinnJobs() {
   return jobs;
 }
 
-module.exports = getFinnJobs
+module.exports = getFinnJobs;
