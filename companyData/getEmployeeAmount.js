@@ -11,7 +11,7 @@ async function getEmployeeAmount(company, location) {
     const token = await getStoredToken();
     const tokenFromDB = await retrieveTokenFromDB()
 
-    console.log(tokenFromDB)
+    console.log('path stored in DB:', tokenFromDB, 'path stored in local json:', token)
 
     const formattedCompany = company.replace(/\s+/g, '+');
 
