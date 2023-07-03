@@ -18,6 +18,8 @@ async function getFinnJobs() {
       hasMoreData = false;
     } else {
       data.docs.forEach((el) => {
+        // It looks like some finn job lists are from nav, we skip these as we already fetch job listings from nav.
+        // If company_name is undefined the listing is from nav (?)
         if (el.company_name !== undefined) {
           jobs.push({
             company: el.company_name,
@@ -28,7 +30,7 @@ async function getFinnJobs() {
             id: `finn_${el.ad_id}`,
           });
         } else {
-          console.log("Skipped job with undefined company_name:", el);
+          console.log("Finn fetcher: Skipped job with undefined company_name");
         }
       });
       page++;

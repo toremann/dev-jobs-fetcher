@@ -37,6 +37,7 @@ cron.schedule(kode24Timer, async () => {
     if (jobSalaries.length > 0) {
       const payload = generatePayload(jobSalaries, "kode24");
       // Send webhook
+      console.log("kode24", payload);
       await sendWebhook(payload);
     }
   } catch (error) {
@@ -57,6 +58,8 @@ cron.schedule(navTimer, async () => {
     if (jobSalaries.length > 0) {
       const payload = generatePayload(jobSalaries, "nav");
       // Send webhook
+      console.log("nav", payload);
+
       await sendWebhook(payload);
     }
   } catch (error) {
@@ -77,6 +80,8 @@ cron.schedule(finnTimer, async () => {
     if (jobSalaries.length > 0) {
       const payload = generatePayload(jobSalaries, "finn");
       // Send webhook
+      console.log("finn", payload);
+
       await sendWebhook(payload);
     }
   } catch (error) {
