@@ -71,6 +71,6 @@ async function getNewToken() {
   }
 }
 
-// getNewToken()
+getNewToken()
 
 module.exports = getNewToken;
