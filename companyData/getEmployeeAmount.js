@@ -1,6 +1,7 @@
 require("dotenv").config({ path: "../.env"});
 const testToken = require('./testToken')
 const getStoredToken = require('./getStoredToken')
+const retrieveTokenFromDB = require('../db/retrieveToken')
 const axios = require('axios');
 
 async function getEmployeeAmount(company, location) {
@@ -8,6 +9,9 @@ async function getEmployeeAmount(company, location) {
 
   try {
     const token = await getStoredToken();
+    const tokenFromDB = await retrieveTokenFromDB()
+
+    console.log(tokenFromDB)
 
     const formattedCompany = company.replace(/\s+/g, '+');
 

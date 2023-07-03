@@ -1,4 +1,5 @@
 const cron = require("node-cron");
+const getNewToken = require("./companyData/getNewToken");
 const insertJobsToDB = require("./db/insertJobs");
 const getNavJobs = require("./fetchers/nav");
 const getKode24Jobs = require("./fetchers/kode24");
@@ -8,8 +9,19 @@ const getJobSalary = require("./salary/getSalary");
 const navTimer = "0 * * * *";
 const kode24Timer = "20 * * * *";
 const finnTimer = "40 * * * *";
+const freshPath = "50 * * * *";
 
 console.log("Running..");
+
+// Get fresh path
+
+cron.schedule(freshPath, async () => {
+  try {
+    await getNewToken();
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 // Schedule cron job for fetching Kode24 jobs
 cron.schedule(kode24Timer, async () => {
