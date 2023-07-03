@@ -1,9 +1,9 @@
 require("dotenv").config();
 const pool = require("./connect");
-const sendWebhook = require("../webhook/hook");
-const generatePayload = require("../webhook/payload");
 
-async function insertJobsToDB(jobs, fetcher) {
+// Filer and insert new jobs to database, also return the new jobs array.
+
+async function insertJobsToDB(jobs) {
   const client = await pool.connect();
 
   try {
@@ -20,12 +20,9 @@ async function insertJobsToDB(jobs, fetcher) {
       }
     }
 
-    if (insertedJobs.length > 0) {
-      const payload = generatePayload(insertedJobs, fetcher);
-      await sendWebhook(payload);
-    }
+    console.log("Number of jobs inserted:", insertedJobs.length);
 
-    return insertedJobs; 
+    return insertedJobs;
   } catch (err) {
     console.error(err);
   } finally {

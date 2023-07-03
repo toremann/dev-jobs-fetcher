@@ -5,6 +5,8 @@ const getNavJobs = require("./fetchers/nav");
 const getKode24Jobs = require("./fetchers/kode24");
 const getFinnJobs = require("./fetchers/finn");
 const getJobSalary = require("./salary/getSalary");
+const generatePayload = require("./webhook/payload");
+const sendWebhook = require("./webhook/hook");
 
 const navTimer = "0 * * * *";
 const kode24Timer = "20 * * * *";
@@ -14,7 +16,6 @@ const freshPath = "50 * * * *";
 console.log("Running..");
 
 // Get fresh path
-
 cron.schedule(freshPath, async () => {
   try {
     await getNewToken();
@@ -33,6 +34,9 @@ cron.schedule(kode24Timer, async () => {
     // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
     console.log(jobSalaries);
+    const payload = generatePayload(jobSalaries, "kode24");
+    // Send webhook
+    await sendWebhook(payload);
   } catch (error) {
     console.error(error);
   }
@@ -48,6 +52,9 @@ cron.schedule(navTimer, async () => {
     // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
     console.log(jobSalaries);
+    const payload = generatePayload(jobSalaries, "nav");
+    // Send webhook
+    await sendWebhook(payload);
   } catch (error) {
     console.error(error);
   }
@@ -63,6 +70,9 @@ cron.schedule(finnTimer, async () => {
     // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
     console.log(jobSalaries);
+    const payload = generatePayload(jobSalaries, "finn");
+    // Send webhook
+    await sendWebhook(payload);
   } catch (error) {
     console.error(error);
   }
