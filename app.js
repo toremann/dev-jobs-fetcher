@@ -34,9 +34,11 @@ cron.schedule(kode24Timer, async () => {
     // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
     console.log(jobSalaries);
-    const payload = generatePayload(jobSalaries, "kode24");
-    // Send webhook
-    await sendWebhook(payload);
+    if (jobSalaries.length > 0) {
+      const payload = generatePayload(jobSalaries, "kode24");
+      // Send webhook
+      await sendWebhook(payload);
+    }
   } catch (error) {
     console.error(error);
   }
@@ -52,9 +54,11 @@ cron.schedule(navTimer, async () => {
     // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
     console.log(jobSalaries);
-    const payload = generatePayload(jobSalaries, "nav");
-    // Send webhook
-    await sendWebhook(payload);
+    if (jobSalaries.length > 0) {
+      const payload = generatePayload(jobSalaries, "nav");
+      // Send webhook
+      await sendWebhook(payload);
+    }
   } catch (error) {
     console.error(error);
   }
@@ -70,9 +74,11 @@ cron.schedule(finnTimer, async () => {
     // Get salaries for filtered job listings
     const jobSalaries = await getJobSalary(insertedJobs);
     console.log(jobSalaries);
-    const payload = generatePayload(jobSalaries, "finn");
-    // Send webhook
-    await sendWebhook(payload);
+    if (jobSalaries.length > 0) {
+      const payload = generatePayload(jobSalaries, "finn");
+      // Send webhook
+      await sendWebhook(payload);
+    }
   } catch (error) {
     console.error(error);
   }

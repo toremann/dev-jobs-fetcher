@@ -1,0 +1,99 @@
+{
+    "programmingLanguages": [
+      "Java",
+      "Python",
+      "C++",
+      "C#",
+      "JavaScript",
+      "Ruby",
+      "Swift",
+      "PHP",
+      "Go",
+      "Rust",
+      "Kotlin",
+      "TypeScript"
+    ],
+    "frameworksAndLibraries": [
+      "Spring",
+      "Django",
+      "Angular",
+      "React",
+      "Vue.js",
+      "Node.js",
+      "Express.js",
+      "Ruby on Rails",
+      "Flask",
+      "Laravel",
+      "ASP.NET",
+      "Hibernate"
+    ],
+    "databases": [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Oracle",
+      "SQL Server",
+      "SQLite"
+    ],
+    "methodologiesAndPractices": [
+      "Agile",
+      "Scrum",
+      "Kanban",
+      "Test-driven development (TDD)",
+      "Continuous integration (CI)",
+      "Continuous delivery (CD)",
+      "DevOps",
+      "Pair programming"
+    ],
+    "versionControlSystems": [
+      "Git",
+      "SVN",
+      "Mercurial"
+    ],
+    "operatingSystems": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "developmentTools": [
+      "Visual Studio",
+      "Eclipse",
+      "IntelliJ IDEA",
+      "PyCharm",
+      "Visual Studio Code",
+      "Sublime Text",
+      "Atom"
+    ],
+    "webTechnologies": [
+      "HTML",
+      "CSS",
+      "RESTful APIs",
+      "JSON",
+      "XML",
+      "HTTP"
+    ],
+    "cloudPlatformsAndServices": [
+      "Amazon Web Services (AWS)",
+      "Microsoft Azure",
+      "Google Cloud Platform (GCP)",
+      "Docker",
+      "Kubernetes"
+    ],
+    "otherTerms": [
+      "Software development",
+      "Software engineering",
+      "Backend development",
+      "Frontend development",
+      "Full-stack development",
+      "Mobile app development",
+      "Web development",
+      "Object-oriented programming (OOP)",
+      "Algorithms",
+      "Data structures",
+      "Software testing",
+      "Debugging",
+      "Security",
+      "Performance optimization"
+    ]
+  }
+  
