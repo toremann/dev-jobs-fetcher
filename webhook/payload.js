@@ -15,18 +15,19 @@ function generatePayload(insertedJobs, fetcher) {
   const payload = {
     embeds: [
       {
+        title: `New jobs from ${fetcher}:`,
         color: color,
         fields: insertedJobs.map((job) => {
-          const valueString = `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link} <-- max 1024 chars`;
-          console.log('fields.value character count:', valueString.length);
 
           return {
             name: job.company,
-            value: `ID: ${job.id}\nLocation: ${job.lokasjon}\nDate: ${job.dato}\nText: ${job.tekst}\nLink: ${job.link}`,
+            value: `
+            **Location:** ${job.lokasjon}\n**Date:** ${job.dato}\n**Text:** ${job.tekst}\n**Link:** [Read more..](${job.link})\n**Salary:** ${job.avgSalary}\n`,
+            inline: false
           };
         }),
         footer: {
-          text: `Source: ${fetcher}, amount: ${insertedJobs.length}`
+          text: "Salary guesstimated based on kode24.no salary data."
         }
       }
     ]

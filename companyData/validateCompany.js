@@ -3,14 +3,15 @@
 // Output: Company+Name
 
 function validateCompany(company) {
-    const words = company.match(/\b\w+\b/g);
-    const formattedCompany = words ? words.slice(0, 2).join('+') : '';
+    const words = company.match(/^[^\s]+(?:\s[^\s]+)?/);
+    const formattedCompany = words ? words[0].replace(/\s+/g, '+') : '';
   
     console.log("Input:", company);
     console.log("Output:", formattedCompany);
   
     return formattedCompany;
   }
+    
     
 //   validateCompany('Kriminalomsorgsdirektoratet (KDI)')
 //   validateCompany('Sopra Steria - Alle kontor')

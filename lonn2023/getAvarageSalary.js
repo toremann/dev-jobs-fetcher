@@ -35,7 +35,7 @@ async function getAverageSalary(employees, location) {
   }
 
   const averageSalary = Math.floor(employeeValueObj.value);
-  const formattedSalary = `${averageSalary.toLocaleString(undefined, { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })} (guesstimated based on kode24 salary data)`;
+  const formattedSalary = `${averageSalary.toLocaleString(undefined, { style: 'currency', currency: 'NOK', minimumFractionDigits: 0 })}`;
   
   return formattedSalary;
 }
