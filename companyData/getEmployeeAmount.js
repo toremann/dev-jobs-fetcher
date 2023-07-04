@@ -2,6 +2,7 @@ require("dotenv").config({ path: "../.env"});
 const testToken = require('./testToken')
 const getStoredToken = require('./getStoredToken')
 const retrieveTokenFromDB = require('../db/retrieveToken')
+const validateCompany = require('./validateCompany')
 const axios = require('axios');
 
 async function getEmployeeAmount(company, location) {
@@ -11,9 +12,10 @@ async function getEmployeeAmount(company, location) {
     const token = await getStoredToken();
     const tokenFromDB = await retrieveTokenFromDB()
 
+    // Testing
     console.log('path stored in DB:', tokenFromDB, 'path stored in local json:', token)
 
-    const formattedCompany = company.replace(/\s+/g, '+');
+    const formattedCompany = validateCompany(company)
 
     const testUrl = `https://beta.proff.no/_next/data/${token}/search.json?q=${formattedCompany}`;
 
