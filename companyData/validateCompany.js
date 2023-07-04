@@ -12,7 +12,7 @@ function validateCompany(company) {
     return formattedCompany;
   }
     
-  validateCompany('Kriminalomsorgsdirektoratet (KDI)')
-  validateCompany('Sopra Steria - Alle kontor')
+//   validateCompany('Kriminalomsorgsdirektoratet (KDI)')
+//   validateCompany('Sopra Steria - Alle kontor')
 
-// module.exports = validateCompany;
+module.exports = validateCompany;
