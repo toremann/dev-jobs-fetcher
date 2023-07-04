@@ -9,11 +9,9 @@ async function getEmployeeAmount(company, location) {
   console.log('getEmployeeAmount for: ', company, location);
 
   try {
-    const token = await getStoredToken();
-    const tokenFromDB = await retrieveTokenFromDB()
-
+    const token = await retrieveTokenFromDB()
     // Testing
-    console.log('path stored in DB:', tokenFromDB, 'path stored in local json:', token)
+    console.log('path stored in DB:', token)
 
     const formattedCompany = validateCompany(company)
 
