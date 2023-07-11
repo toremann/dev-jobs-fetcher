@@ -21,8 +21,7 @@ function generatePayload(insertedJobs, fetcher) {
 
           return {
             name: job.company,
-            value: `
-            **Location:** ${job.lokasjon}\n**Date:** ${job.dato}\n**Text:** ${job.tekst}\n**Link:** [Read more..](${job.link})\n**Salary:** ${job.avgSalary}\n`,
+            value: `**Location:** ${job.lokasjon}\n**Date:** ${job.dato}\n**Text:** ${job.tekst}\n**Link:** [Read more..](${job.link})\n**Salary:** ${job.avgSalary}\n`,
             inline: false
           };
         }),
